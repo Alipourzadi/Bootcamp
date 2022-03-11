@@ -1,0 +1,365 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #1b2522;
+
+  --title-duration: 500ms;
+  --sub-title-duration: 500ms;
+  --nav-duration: 500ms;
+  --btn-grow-duration: 500ms;
+  --scroll-down-duration: 500ms;
+
+  --sub-title-delay: calc(var(--title-duration) - 200ms);
+  --nav-delay: calc(var(--sub-title-duration) + var(--sub-title-delay));
+  --btn-grow-delay: var(--nav-delay);
+  --scroll-down-delay: var(--nav-delay);
+}
+
+.navbar {
+  background-color: #1b2522;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  animation: nav-enter var(--nav-duration) var(--nav-delay) linear backwards;
+}
+
+.navbar img {
+  width: 50px;
+  margin-left: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item li {
+  padding: 0.3rem;
+}
+
+.nav-item li:hover,
+.nav-item li:focus {
+  background-color: #1991cc;
+  border-radius: 1rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  margin-left: 1rem;
+  color: white;
+}
+
+.landing {
+  display: flex;
+  background: url(./img/jefferson-santos-9SoCnyQmkzI-unsplash.jpg) no-repeat
+    center center/cover;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+#title {
+  font-size: 2.5rem;
+  margin: 0.3em;
+  animation: title-enter var(--title-duration) linear;
+}
+
+#sub-title {
+  font-size: 1.4rem;
+  margin: 0;
+  animation: subtitle-enter var(--sub-title-duration) var(--sub-title-delay)
+    linear backwards;
+}
+
+.btn-grow {
+  background-color: #1991cc;
+  color: white;
+  border: 1px solid #027;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 0.5em;
+  transition: 100ms;
+  animation: btn-grow-scaleup var(--btn-grow-duration) var(--btn-grow-delay)
+    linear backwards;
+}
+
+.btn-grow:hover,
+.btn-grow:focus {
+  background-color: #0271a9;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px 1px black;
+}
+
+.arrow-down {
+  width: 40px;
+  position: absolute;
+  bottom: 1rem;
+  animation: scroll-down-bounce
+      calc(var(--scroll-down-duration) + var(--scroll-down-delay))  1s alternate
+      infinite linear,
+    scroll-down-enter var(--scroll-down-duration) var(--scroll-down-delay)
+      backwards;
+}
+
+header {
+  border: 2px solid #1991cc;
+}
+
+.curriculum {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 450px));
+  justify-content: center;
+  margin: 2rem;
+  font-size: 0.9em;
+  row-gap: 10px;
+  column-gap: 50px;
+}
+
+h2 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.curriculum span {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-align: justify;
+}
+
+.curriculum span:hover img {
+  animation: shake 100ms;
+}
+
+.curriculum img {
+  margin: 0.5rem;
+  width: 50px;
+}
+
+.pricing {
+  display: flex;
+  background-color: #1991cc;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  background-color: #5eb2dc;
+  border: 1px solid #1b2522;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+
+  transition: transform 100ms;
+}
+
+.price:hover {
+  transform: scale(1.05);
+}
+
+.price span {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.price ul {
+  padding-right: 1rem;
+  line-height: 1.5;
+}
+
+.basic-price li:nth-last-child(-n + 4) {
+  text-decoration: line-through;
+}
+
+.Preferred-price li:nth-last-child(-n + 2) {
+  text-decoration: line-through;
+}
+
+.Preferred-price {
+  background-color: #f4f4f4;
+  padding: 1rem 0;
+}
+
+.price:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  transform-origin: right;
+}
+
+.price:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  transform-origin: left;
+}
+
+.form {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.contact h2 {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.form label {
+  font-weight: bold;
+  color: #1b2522;
+}
+
+.form input,
+.form textarea {
+  border: 1px solid #1b2522;
+  border-radius: 0.3em;
+  outline: none;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  padding: 0.3em;
+  width: 100%;
+  transition: border-color 100ms;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 75px;
+  max-height: 200px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #0af;
+  background-color: #f4f4f4;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 0;
+  margin-bottom: 1rem;
+  border: 1px solid #027;
+  border-radius: 0.2rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1991cc;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@keyframes title-enter {
+  from {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes subtitle-enter {
+  from {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes nav-enter {
+  from {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes btn-grow-scaleup {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes scroll-down-enter {
+  from {
+    transform: scale(0) rotate(180deg);
+  }
+}
+
+@keyframes scroll-down-bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .landing {
+    background-position: 65% 50%;
+  }
+
+  .curriculum {
+    grid-template-columns: minmax(auto, 450px);
+    row-gap: 20px;
+  }
+
+  .curriculum span {
+    text-align: left;
+  }
+
+  .pricing {
+    flex-wrap: wrap;
+  }
+
+  .price {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .price:last-child {
+    margin-bottom: 0;
+  }
+
+  .price:first-child,
+  .price:last-child {
+    border-radius: 0.3em;
+    border: 1px solid black;
+    transform-origin: center;
+  }
+}
